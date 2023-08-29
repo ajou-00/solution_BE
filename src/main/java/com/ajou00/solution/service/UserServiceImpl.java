@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
         member.setId(userJoinDto.getId());
         member.setPassword(userJoinDto.getPassword());
         member.setRole(userJoinDto.getRole());
+        member.setUserName(userJoinDto.getUserName());
         memberRepository.save(member);
         return new Exception("회원가입 완료");
     }

@@ -11,4 +11,5 @@ public class UserJoinDto {
     private String id;
     private String password;
     private String role;
+    private String userName;
 }
