@@ -3,6 +3,7 @@ package com.ajou00.solution.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
 public class Order {
 
     @Id
@@ -24,8 +26,17 @@ public class Order {
 
     private Long quantity;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime timestamp;
+    @Temporal(TemporalType.DATE)
+    private LocalDate timestamp;
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", productNum=" + productNum +
+                ", quantity=" + quantity +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }

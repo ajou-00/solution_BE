@@ -19,6 +19,13 @@ public class ProductController {
     @Autowired
     private final ProductService productService;
 
+    @GetMapping
+    public ResponseEntity<?> findAllProducts() {
+        List<Product> productList = productService.findAllProducts();
+
+        return ResponseEntity.ok().body(productList);
+    }
+
     @GetMapping("/random")
     public ResponseEntity<?> findRandomProducts() {
         List<Product> randomProductList = productService.findRandomProducts();

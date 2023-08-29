@@ -7,4 +7,6 @@ import java.util.List;
 public interface ProductService {
     List<Product> findRandomProducts();
     List<Product> findNonRandomProducts();
+
+    List<Product> findAllProducts();
 }

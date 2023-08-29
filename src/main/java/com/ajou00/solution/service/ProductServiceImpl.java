@@ -24,4 +24,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findNonRandomProducts() {
         return productRepository.findByIsRandomFalse();
     }
+
+    @Override
+    public List<Product> findAllProducts() {
+        return productRepository.findAll();
+    }
 }
