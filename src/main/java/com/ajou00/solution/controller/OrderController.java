@@ -44,6 +44,12 @@ public class OrderController {
 
     }
 
+    @GetMapping("/{productNum}")
+    public ResponseEntity<?> getOrderListByProductNum(@PathVariable Long productNum){
+        List<Order> orderList = orderService.findOrderByProductNum(productNum);
+
+        return ResponseEntity.ok().body(orderList);
+    }
 
 
 }

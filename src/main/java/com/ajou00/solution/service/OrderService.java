@@ -11,4 +11,6 @@ public interface OrderService {
     List<Order> findAll();
 
     List<OrderByDateDto> findOrderByDate(List<Order> orderList);
+    List<Order> findOrderByProductNum(Long productNum);
+
 }
