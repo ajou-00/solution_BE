@@ -4,6 +4,7 @@ import com.ajou00.solution.domain.Order;
 import com.ajou00.solution.domain.Product;
 import com.ajou00.solution.dto.OrderByDateDto;
 import com.ajou00.solution.dto.OrderDto;
+import com.ajou00.solution.repository.MemberRepository;
 import com.ajou00.solution.repository.OrderRepository;
 import com.ajou00.solution.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Autowired
     private final ProductRepository productRepository;
+    private final MemberRepository memberRepository;
 
     @Override
     public void insertOrder(List<OrderDto> orderDtoList) {
@@ -106,5 +108,9 @@ public class OrderServiceImpl implements OrderService{
         return resultList;
     }
 
+    @Override
+    public List<Order> getOrderListByuserName(String userName) {
+        return orderRepository.findByUserName(userName);
+    }
 
 }
