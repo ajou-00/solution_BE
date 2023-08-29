@@ -51,5 +51,9 @@ public class OrderController {
         return ResponseEntity.ok().body(orderList);
     }
 
-
+    @GetMapping("/list/{userName}")
+    public ResponseEntity<?> getOrderListByUserName(@PathVariable String userName) {
+        List<Order> orderList = orderService.getOrderListByUserName(userName);
+        return ResponseEntity.ok().body(orderList);
+    }
 }
