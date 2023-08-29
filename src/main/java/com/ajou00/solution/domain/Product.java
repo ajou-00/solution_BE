@@ -4,24 +4,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@RequiredArgsConstructor
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Product {
 
     @Id
-    @GeneratedValue
     private Long productNum;
 
-    private int total;
+    @ColumnDefault("10")
+    private Long total;
+
+    private Long orderCnt;
 
     private boolean isRandom;
 
-    @OneToMany(mappedBy = "product")
-    private List<Order> orderList;
 }

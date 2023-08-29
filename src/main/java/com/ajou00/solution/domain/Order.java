@@ -1,11 +1,16 @@
 package com.ajou00.solution.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Order {
 
@@ -15,11 +20,12 @@ public class Order {
 
     private String userName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="productNum")
-    private Product product;
+    private Long productNum;
 
-    private int quantity;
+    private Long quantity;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime timestamp;
 
 
 }
