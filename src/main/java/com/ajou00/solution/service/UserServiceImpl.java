@@ -19,15 +19,33 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String login(UserLoginDto userLoginDto) throws Exception {
-
         Member member = memberRepository
                 .findById(userLoginDto.getId())
                 .orElseThrow(() -> new Exception("아이디 혹은 비밀번호를 확인하세요."));
 
         if (!member.getPassword().equals(userLoginDto.getPassword())) throw new Exception("아이디 혹은 비밀번호를 확인하세요.");
+        else {
+            member.setIsLogin(true);
+            memberRepository.save(member);
+        }
 
-        return "로그인 성공";
+        return member.getUserName();
     }
+
+    @Override
+    public String logout() throws Exception {
+        Member member = memberRepository.findByIsLogin(true).orElseThrow(() -> new Exception("error"));
+        member.setIsLogin(false);
+        memberRepository.save(member);
+        return "로그아웃";
+    }
+
+    @Override
+    public Boolean isLogin() throws Exception {
+        Boolean bool = memberRepository.existsMemberByIsLogin(true).orElseThrow(() -> new Exception("error"));
+        return bool;
+    }
+
 
     @Override
     public Exception join(UserJoinDto userJoinDto) throws Exception {
