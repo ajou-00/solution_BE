@@ -7,6 +7,8 @@ import com.ajou00.solution.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -46,6 +48,10 @@ public class UserServiceImpl implements UserService {
         return bool;
     }
 
+    @Override
+    public List<Member> getCustomers() {
+        return memberRepository.findAll();
+    }
 
     @Override
     public Exception join(UserJoinDto userJoinDto) throws Exception {
