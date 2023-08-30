@@ -108,7 +108,6 @@ public class OrderServiceImpl implements OrderService{
         return resultList;
     }
 
-    @Override
     public List<Order> findOrderByProductNum(Long productNum) {
         List<Order> orderList = orderRepository.findByProductNum(productNum);
         return orderList;

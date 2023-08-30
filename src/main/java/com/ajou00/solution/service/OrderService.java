@@ -9,10 +9,7 @@ import java.util.List;
 public interface OrderService {
     void insertOrder(List<OrderDto> orderDto);
     List<Order> findAll();
-
     List<OrderByDateDto> findOrderByDate(List<Order> orderList);
-
     List<Order> findOrderByProductNum(Long productNum);
     List<Order> getOrderListByUserName(String userName);
-
 }

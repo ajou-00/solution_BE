@@ -4,6 +4,7 @@ import com.ajou00.solution.domain.Order;
 import com.ajou00.solution.dto.OrderByDateDto;
 import com.ajou00.solution.dto.OrderDto;
 import com.ajou00.solution.service.OrderService;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

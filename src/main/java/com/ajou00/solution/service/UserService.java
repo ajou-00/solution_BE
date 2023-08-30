@@ -8,5 +8,9 @@ public interface UserService {
 
     String login(UserLoginDto userLoginDto) throws Exception;
 
+    String logout() throws Exception;
+
+    Boolean isLogin() throws Exception;
+
     Exception join(UserJoinDto userJoinDto) throws Exception;
 }
