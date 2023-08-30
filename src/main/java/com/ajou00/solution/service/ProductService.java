@@ -9,4 +9,7 @@ public interface ProductService {
     List<Product> findNonRandomProducts();
 
     List<Product> findAllProducts();
+
+    void insertProduct(List<Product> productList);
+
 }

@@ -21,7 +21,10 @@ public class Product {
     @Id
     private Long productNum;
 
-    @ColumnDefault("10")
+    private String name;
+
+    private Long price;
+
     private Long total;
 
     private Long orderCnt;

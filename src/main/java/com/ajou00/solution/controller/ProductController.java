@@ -1,13 +1,13 @@
 package com.ajou00.solution.controller;
 
 import com.ajou00.solution.domain.Product;
+import com.ajou00.solution.dto.OrderDto;
 import com.ajou00.solution.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +18,13 @@ public class ProductController {
 
     @Autowired
     private final ProductService productService;
+
+    @PostMapping
+    public ResponseEntity<?> addProductList(@RequestBody List<Product> productList) {
+        productService.insertProduct(productList);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
     @GetMapping
     public ResponseEntity<?> findAllProducts() {

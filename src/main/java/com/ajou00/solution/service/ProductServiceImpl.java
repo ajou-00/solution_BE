@@ -29,4 +29,21 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAllProducts() {
         return productRepository.findAll();
     }
+
+    @Override
+    public void insertProduct(List<Product> productList) {
+        for(Product product : productList) {
+
+            Product newProduct = Product.builder()
+                    .productNum(product.getProductNum())
+                    .name(product.getName())
+                    .price(product.getPrice())
+                    .total(product.getTotal())
+                    .orderCnt(product.getOrderCnt())
+                    .isRandom(product.isRandom())
+                    .build();
+
+            productRepository.save(newProduct);
+        }
+    }
 }

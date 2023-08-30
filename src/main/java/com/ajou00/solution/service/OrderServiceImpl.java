@@ -34,16 +34,16 @@ public class OrderServiceImpl implements OrderService{
             //orderDto의 productNum으로 상품 조회
             Product product = productRepository.findByProductNum(orderDto.getProductNum());
 
-            if(product==null){
-                Product newProduct = new Product();
-                newProduct.setProductNum(orderDto.getProductNum());
-                newProduct.setOrderCnt(0L);
-                newProduct.setTotal(10L);
-                newProduct.setRandom(false);
-                productRepository.save(newProduct);
-
-                product = newProduct;
-            }
+//            if(product==null){
+//                Product newProduct = new Product();
+//                newProduct.setProductNum(orderDto.getProductNum());
+//                newProduct.setOrderCnt(0L);
+//                newProduct.setTotal(10L);
+//                newProduct.setRandom(false);
+//                productRepository.save(newProduct);
+//
+//                product = newProduct;
+//            }
 
             //주문 생성
             Order order = Order.builder()
@@ -108,8 +108,13 @@ public class OrderServiceImpl implements OrderService{
         return resultList;
     }
 
+    public List<Order> findOrderByProductNum(Long productNum) {
+        List<Order> orderList = orderRepository.findByProductNum(productNum);
+        return orderList;
+    }
+
     @Override
-    public List<Order> getOrderListByuserName(String userName) {
+    public List<Order> getOrderListByUserName(String userName) {
         return orderRepository.findByUserName(userName);
     }
 
